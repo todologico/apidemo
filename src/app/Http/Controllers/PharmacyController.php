@@ -94,30 +94,28 @@ class PharmacyController extends Controller
     {
 
         try {
-
+            // Obtén los datos validados directamente desde el FormRequest
             $geoData = $request->validated();
 
             $lat = $geoData['lat'];
             $lon = $geoData['lon'];
-            
-            if (!is_numeric($lat) || !is_numeric($lon)) {
 
-                return response()->json(['message' => 'valores incorrectos'], 400); // bad request
-            }
-        
-            // haversine
-            $pharmacies = $this->pharmacyService->findOnePharmacySVE($lat,$lon);
+            // busca farmacias usando el servicio de farmacia
+            $pharmacies = $this->pharmacyService->findOnePharmacySVE($lat, $lon);
 
             if ($pharmacies) {
-                
-                return response()->json($pharmacies);
 
-            } else {
-                
-                return response()->json(['message' => 'no hay farmacias cercanas'], 404); //not found
-            }  
+                return response()->json($pharmacies);
             
+            } else {
+            
+                return response()->json(['message' => 'No hay farmacias cercanas'], Response::HTTP_NOT_FOUND);
+            }
+
         } catch (\Exception $e) {
+
+            // ver log
+            // Log::error('Error finding pharmacy: ' . $e->getMessage());
 
             return response()->json(['message' => 'Hay un problema.'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
