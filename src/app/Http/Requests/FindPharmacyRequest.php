@@ -31,11 +31,11 @@ class FindPharmacyRequest extends FormRequest
      */
     protected function prepareForValidation()
     {
-        // Esto asegura que los parámetros de la ruta se incluyan en la validación
+        // Los parámetros de la ruta se incluyan en la validación
         $this->merge([
             'lat' => $this->route('lat'),
             'lon' => $this->route('lon'),
         ]);
     }
-    
+
 }
