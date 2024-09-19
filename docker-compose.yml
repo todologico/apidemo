@@ -1,0 +1,58 @@
+version: '3.7'
+services:
+  apipharma:
+    build:    
+      context: .
+    image: apipharma:1.0.0
+    container_name: apipharma
+    hostname: apipharma
+    restart: unless-stopped
+    tty: true
+    environment:
+      - DB_CONNECTION=mysql
+      - DB_HOST=apipharma-db
+      - DB_PORT=3310
+      - DB_DATABASE=apipharma
+      - DB_USERNAME=apipharma
+      - DB_PASSWORD=00000000
+    working_dir: /var/www/app
+    ports:
+      - '83:80'
+    volumes:
+      - ./src:/var/www/app
+    networks:
+      - netdocker  
+  apipharma-phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: apipharma-dbadmin
+    restart: unless-stopped
+    tty: true
+    environment:
+      - PMA_HOST=apipharma-db
+      - PMA_PORT=3310
+      - PMA_ARBITRARY=1
+    ports:
+      - '97:80'
+    networks:
+      - netdocker
+  apipharma-db:
+    image: mariadb:10
+    container_name: apipharma-db
+    hostname: apipharma-db
+    restart: unless-stopped
+    tty: true
+    environment:
+      - MARIADB_DATABASE=apipharma
+      - MARIADB_USER=apipharma
+      - MARIADB_PASSWORD=00000000
+      - MARIADB_ROOT_PASSWORD=00000000
+    command: --port=3310 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    ports:
+      - '3310:3310'
+    volumes:
+      - ./db:/var/lib/mysql:rw
+    networks:
+      - netdocker
+networks:
+  netdocker:
+    driver: bridge
