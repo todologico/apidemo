@@ -118,7 +118,7 @@ POST http://127.0.0.1:83/api/register
 
 POST http://127.0.0.1:83/api/login
 
-GET http://127.0.0.1:83/api/pharmacy
+GET http://127.0.0.1:83/api/pharmacy/pharmacy-latitude-longitude
 
 GET http://127.0.0.1:83/api/pharmacies-show
 
@@ -182,7 +182,7 @@ Authorization: Bearer token
 
 **BUSCAR FARMACIAS CERCANAS A UNA LATITUD Y LONGITUD:**  
 
-GET http://127.0.0.1:83/api/pharmacy/19.4326/-99.1332 
+GET http://127.0.0.1:83/api/pharmacy-latitude-longitude/19.4326/-99.1332
 
 HEADERS:  
 Accept: application/json  

@@ -26,5 +26,5 @@ Route::post('/pharmacies-store', [PharmacyController::class, 'storePharmacy'])->
 Route::get('/pharmacies-show/{id}', [PharmacyController::class, 'showPharmacy'])->name('showpharmacy')->where('id', '[0-9]+')->middleware('auth:sanctum');
 
 // busco una farmacia especifica por latitud y longitud
-Route::get('/pharmacy/{lat}/{lon}', [PharmacyController::class, 'findPharmacy'])->name('findpharmacy')->middleware('auth:sanctum');
+Route::get('/pharmacy-latitude-longitude/{lat}/{lon}', [PharmacyController::class, 'findPharmacy'])->name('findpharmacy')->middleware('auth:sanctum');
 
