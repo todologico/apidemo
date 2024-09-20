@@ -9,6 +9,8 @@ use App\Services\Pharmacy\PharmacyService;
 use App\Http\Requests\StorePharmacyRequest;
 use App\Http\Requests\FindPharmacyRequest;
 
+use Log;
+
 class PharmacyController extends Controller
 {
 
@@ -46,6 +48,8 @@ class PharmacyController extends Controller
             }
     
         } catch (\Exception $e) {
+
+            Log::error('Error storePharmacy: ' . $e->getMessage());
             
             return response()->json(['message' => 'Hay un problema con esta operacion.'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
@@ -75,6 +79,8 @@ class PharmacyController extends Controller
 
 
         } catch (\Exception $e) {
+
+            Log::error('Error showPharmacy: ' . $e->getMessage());
 
             return response()->json(['message' => 'Hay un problema, llama a soporte.'], Response::HTTP_INTERNAL_SERVER_ERROR);
 
@@ -114,8 +120,8 @@ class PharmacyController extends Controller
 
         } catch (\Exception $e) {
 
-            // ver log
-            // Log::error('Error finding pharmacy: ' . $e->getMessage());
+            // logging
+            Log::error('Error findPharmacy: ' . $e->getMessage());
 
             return response()->json(['message' => 'Hay un problema.'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
