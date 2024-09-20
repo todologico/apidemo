@@ -120,7 +120,6 @@ class PharmacyController extends Controller
 
         } catch (\Exception $e) {
 
-            // logging
             Log::error('Error findPharmacy: ' . $e->getMessage());
 
             return response()->json(['message' => 'Hay un problema.'], Response::HTTP_INTERNAL_SERVER_ERROR);
