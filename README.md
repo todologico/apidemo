@@ -2,12 +2,12 @@
 **Fecha**: 15 de septiembre de 2024  
 
 Esta es una demostración de una API que permite:  
-- **Crear farmacias** con latitud y longitud.  
-- **Consultar el listado** de farmacias.  
-- **Encontrar la farmacia más cercana** ingresando la latitud y longitud de un punto de referencia.
+- **Crear farmacias con latitud y longitud.**    
+- **Consultar el listado de farmacias.**    
+- **Encontrar la farmacia más cercana ingresando la latitud y longitud de un punto de referencia.**
 
 ## Arquitectura
-El proyecto sigue una arquitectura de **3 capas**:  
+**El proyecto sigue una arquitectura de 3 capas**:  
 - **Controllers**: Se encargan de recibir las solicitudes y enviar las respuestas. No contienen lógica de negocio.  
 - **Services**: Aquí se ubica la lógica de negocio.  
 - **Repositories**: Administran el acceso a la base de datos.
