@@ -1,26 +1,32 @@
-## Api Demo - Laravel 11 Sanctum - MariaDB - phpMyAdmin - Docker  
-##### - 15-Sept-2024
+# API Demo - Laravel 11 Sanctum - MariaDB - phpMyAdmin - Docker  
+**Fecha**: 15 de septiembre de 2024  
 
-Demo de API que permite crear farmacias con latitud y longitud, consultar el listado de las mismas y encontrar la mas cercana ingresando latitud y longitud de un punto inicial.  
-Arquitectura de 3 capas: CONTROLLERS, SERVICES Y REPOSITORIES. 
+Esta es una demostración de una API que permite:  
+- **Crear farmacias** con latitud y longitud.  
+- **Consultar el listado** de farmacias.  
+- **Encontrar la farmacia más cercana** ingresando la latitud y longitud de un punto de referencia.
 
-- Los Controladores se utilizan para recibir y responder, no contienen lógica de negocio.  
-- Services contiene la lógica pura de negocio.  
-- Repositories accede al modelo de base de datos.  
+## Arquitectura
+El proyecto sigue una arquitectura de **3 capas**:  
+- **Controllers**: Se encargan de recibir las solicitudes y enviar las respuestas. No contienen lógica de negocio.  
+- **Services**: Aquí se ubica la lógica de negocio.  
+- **Repositories**: Administran el acceso a la base de datos.
 
-Se utilizan POLICIES donde es posible incrementar la seguridad según alcance del usuario.  
-Las validaciones de request se personalizan en clases aparte, carpeta REQUESTS.  
-Se utilizan try-catch básico para el manejo simple de errores.  
-Se realizan test para asegurar la calidad del código y funcionamiento del servicio, carpeta TESTS/FEATURE  
-Se utiliza Query Builder en vez de Eloquent, ya que el primero es más rapido, lo cual mejora la performance para servicios API.
+## Características adicionales
+- **Policies**: Se implementan para incrementar la seguridad según el rol o permisos del usuario.
+- **Validaciones**: Las reglas de validación de los requests están centralizadas en clases específicas dentro del directorio `Requests`.
+- **Manejo de errores**: Se utiliza un manejo de excepciones con bloques `try-catch` para una captura básica de errores.
+- **Testing**: Se realizan pruebas para asegurar la calidad del código y del servicio, ubicadas en el directorio `Tests/Feature`.
+- **Optimización**: Se utiliza **Query Builder** en lugar de Eloquent para mejorar el rendimiento en el acceso a los datos, ya que es más eficiente en escenarios de APIs.
 
-------------------------------------------------------------------------
+---
 
-Servicios a crear en ambiente dockerizado:
+## Servicios Dockerizados
+- **MariaDB**: Contenedor para la base de datos (`apipharma-db`).  
+- **phpMyAdmin**: Interfaz para administrar la base de datos (`apipharma-dbadmin`).  
+- **APP**: Contenedor de la aplicación (`apipharma`).  
 
-MariaDB     --> apipharma-db  
-phpMyAdmin  --> apipharma-dbadmin  
-APP         --> apipharma  
+-----------------------------------------
 
 
 **Instalación no productiva, solo para demo de código:**  
