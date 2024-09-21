@@ -38,7 +38,6 @@ SSL no activo
 Clonar el repositorio.   
 Situados en /apidemo, desde la consola ejecutar el siguiente comando, el cual creara las carpeta "db" (volumen mariadb) y levantará los contenedores de los tres servicios antes mencionados.
 
-
 **mkdir -p db && docker-compose up -d**  
 
 -----------------------------------------
@@ -81,11 +80,9 @@ Nota: si el proceso pide correr migraciones, hacerlo.
 
 Verificamos que accedemos a artisan:
 
-```bash
 **$ php artisan**  
 
 Verificamos que accedemos a la DB, dentro del contenedor ejecutamos:   
-
 
 **$ php artisan tinker**  
 **use Illuminate\Support\Facades\DB; DB::connection()->getPdo();**  
