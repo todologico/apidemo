@@ -38,8 +38,9 @@ SSL no activo
 Clonar el repositorio.   
 Situados en /apidemo, desde la consola ejecutar el siguiente comando, el cual creara las carpeta "db" (volumen mariadb) y levantará los contenedores de los tres servicios antes mencionados.
 
+```bash
 **mkdir -p db && docker-compose up -d**  
-
+```.
 -----------------------------------------
 
 **Paso 2:**
