@@ -40,7 +40,7 @@ Situados en /apidemo, desde la consola ejecutar el siguiente comando, el cual cr
 
 ```bash
 **mkdir -p db && docker-compose up -d**  
-```.
+```  
 -----------------------------------------
 
 **Paso 2:**
@@ -59,30 +59,34 @@ DB_PASSWORD=00000000
 
 Ingresamos al contenedor de la app:
 
+```bash
 **$ docker exec -it apipharma bash**  
-
+```  
 Corremos comandos para habilitar permisos de escritura  
 
+```bash
 **# chmod -R 775 bootstrap/**  
 **# chmod -R 775 storage/**  
-
+```  
 Al construir el contenedor se da de alta un usuario no root (appuser), el cual es necesario en el contenedor apipharma para correr comandos artisan.
 Ingresar al contenedor de la app y con usuario appuser correr el comando para instalar dependencias:
-
+```bash
 **# su appuser**   
-
+```  
 Ya con usuario appuser (no usar root), ejecutamos:   
-
+```bash
 **$ composer install** 
-
+```  
 Nota: si el proceso pide correr migraciones, hacerlo.
 
 Verificamos que accedemos a artisan:
 
+```bash
 **$ php artisan**  
 
 Verificamos que accedemos a la DB, dentro del contenedor ejecutamos:   
 
+```bash
 **$ php artisan tinker**  
 **use Illuminate\Support\Facades\DB; DB::connection()->getPdo();**  
 
